@@ -18,6 +18,6 @@ The implementation I refer to is: https://github.com/lucidrains/stylegan2-pytorc
 
 ## Training
 
-Please prepare a set of images in the /dataset folder or a pickle file containg a list of training RGB images.
+Please prepare a set of images in the /dataset folder or a pickle file containing a list of training RGB images.
 
 Next, run the Train_StyleGAN2.ipynb for training.

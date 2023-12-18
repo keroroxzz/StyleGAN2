@@ -2,3 +2,6 @@
 *.pth
 logs/*
 dataset/*
+.jpg
+output/*
+.vscode/*

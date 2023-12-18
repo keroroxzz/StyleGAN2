@@ -2,6 +2,7 @@
 # For study purpose only
 # Reference: https://github.com/lucidrains/stylegan2-pytorch
 
+# torch modules
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

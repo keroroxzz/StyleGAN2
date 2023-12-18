@@ -1,4 +1,9 @@
-# import module
+# StyleGAN2 implementation by BrianTu
+# For study purpose only
+# Reference: https://github.com/lucidrains/stylegan2-pytorch
+# Partially modified from materials of Machine Learning course by Hung-yi Lee
+
+# import modules
 import os
 import cv2
 import glob
@@ -6,17 +11,18 @@ import pickle
 from tqdm import tqdm
 from os.path import exists
 
+# torch module
 import torchvision.transforms as transforms
 from torch.utils.data import Dataset
 
 class ImageDataset(Dataset):
-    def __init__(self, wd, folder, pretransform, posttransform, force_read=False):
+    def __init__(self, workdirectory, folder, pretransform, posttransform, force_read=False):
         self.posttransform = posttransform
         
-        self.wd = wd
-        self.files = os.path.join(self.wd, folder)
+        self.workdirectory = workdirectory
+        self.files = os.path.join(self.workdirectory, folder)
         self.fnames = glob.glob(os.path.join(self.files, '*'))
-        self.packpath = os.path.join(self.wd, 'datapack.pickle')
+        self.packpath = os.path.join(self.workdirectory, 'datapack.pickle')
         
         if (not force_read) and exists(self.packpath):
             print(f'DataPack is found at {self.packpath}, load dataset from the pack...')
@@ -39,7 +45,7 @@ class ImageDataset(Dataset):
     def __len__(self):
         return len(self.imgs)
     
-def makeDataset(filepath):
+def makeDatasetWithTransforms(filepath):
     
     pretransform = transforms.Compose([
         transforms.ToPILImage(),

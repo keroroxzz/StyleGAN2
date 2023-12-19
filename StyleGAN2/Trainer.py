@@ -159,7 +159,7 @@ class TrainerGAN():
 
                     loss_G = self.lossModule.GeneratorLoss(fakeScores)
 
-                    pathLengthPenalty = self.lossModule.weightedPathLengthRegularization(z, fakeImgs)
+                    pathLengthPenalty = self.lossModule.weightedPathLengthRegularization(style, fakeImgs)
                     loss_G = loss_G + pathLengthPenalty
                     loginfo["generator loss"] = loss_G.item()
 
